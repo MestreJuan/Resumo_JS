@@ -1,0 +1,86 @@
+RESUMO EM JAVASCRIPT
+
+VARIÁVEIS
+Detecta automaticamente o tipo de dado (tipagem dinâmica), por isso definem o escopo e a mutabilidade
+Padrão de 64 bits lidos como "number"
+1- const (imutável) [#define]
+2- let (bloco) [int, float]
+3- var (sem bloco) 
+
+
+SÍMBOLOS E OPERADORES
+1- . - Uso para membros de objetos (objeto.membro)
+2- [] - Acessa e grava membros de array (array[2])
+3- () - Chamadas e agrupamento (função (), ((a +b) * c))
+4- = - atribui valor (x = 5)
+5- == e != - Compara valores e converte tipos de dados para comparação(x == y, x != y)
+6- === - Compara valor e tipo de dado sem conversão (5 === "5" = false)
+7- <, >, <= e >= - Compara valores (x > y, x <= y)
+8- typeof - usado para descobrir o tipo de uma variável (typeof x)
+9- +, -, *, / e % - Operadores aritméticos (x - y)
+10- -- e ++ - Incrementa e decrementa (x++)
+11- ** - Potência (2 ** 3 = 8)
+12- ? - Ternário (const status = idade >= 18 ? "adulto" : "menor"
+13- ?? - Define valor padrão se a variável for nula
+14- ?. - Tenta acessar um membro do objeto que, se for nulo, interrompe o processo sem erro
+15- ... - Clona arrays ou objetos (const novoArray = [...arrayAntigo, 4, 5]
+16- `` - Permite colocar variáveis em string com ${}
+16- ${} - Coloca variáveis dentro de strings ('Nome = ${nome}')
+17 && e || - E e OU (adiciona mais uma condição para dar verdadeiro)
+18- (conversão) - Converte uma variável de um tipo para outro (Number(x), String(x), parseInt(x))
+19- \ - Escapes de strings ("\nHello World")
+
+
+FUNÇÕES
+1- Declarada com a palavra function [substituindo o tipo de retorno]
+
+function soma(a, b)
+{
+   return a + b;
+}
+
+2- Pode ser armazenada em uma variável
+
+const soma = function(a, b)
+{
+   return a + b;
+}
+
+3- function pode ser substituído por uma seta (=>) na forma curta 
+
+const soma = (a, b) => a + b;
+
+4- Se não usar return no final da função, devolve undefined [void] automaticamente
+5- Pode atribuir um valor caso não seja enviado à função
+
+function dobro(a, b = 2)
+{
+   return a * b;
+}
+
+6- Pode-se passar uma função como parâmetro para outra através do nome
+
+function executarOperação(a, b, operacao)
+{
+   return operacao(a, b)
+}
+
+console.log(executarOperacao(5, 10, soma));
+
+7- IFFE - função executada assim que definida
+
+(function()
+{
+   console.log("Executada automaticamente");
+})();
+
+8- Pode receber um número variável de argumentos usando ...
+
+function soma(...numeros)
+{
+   return numeros.reduce((total, n) => total + n, 0);
+}
+
+9- Uma função pode retornar outra função
+
+10- Não tem obrigatoriedade de um main()
