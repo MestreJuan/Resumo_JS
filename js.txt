@@ -25,10 +25,10 @@ SÍMBOLOS E OPERADORES
 14- ?. - Tenta acessar um membro do objeto que, se for nulo, interrompe o processo sem erro
 15- ... - Clona arrays ou objetos (const novoArray = [...arrayAntigo, 4, 5]
 16- `` - Permite colocar variáveis em string com ${}
-16- ${} - Coloca variáveis dentro de strings ('Nome = ${nome}')
-17 && e || - E e OU (adiciona mais uma condição para dar verdadeiro)
-18- (conversão) - Converte uma variável de um tipo para outro (Number(x), String(x), parseInt(x))
-19- \ - Escapes de strings ("\nHello World")
+17- ${} - Coloca variáveis dentro de strings ('Nome = ${nome}')
+18 && e || - E e OU (adiciona mais uma condição para dar verdadeiro)
+19- (conversão) - Converte uma variável de um tipo para outro (Number(x), String(x), parseInt(x))
+20- \ - Escapes de strings ("\nHello World")
 
 
 FUNÇÕES
@@ -84,3 +84,293 @@ function soma(...numeros)
 9- Uma função pode retornar outra função
 
 10- Não tem obrigatoriedade de um main()
+
+
+OBJETOS
+1- São criados com um nome "principal" e podem ser mutáveis ou nao (const ou let)
+2- Entre chaves ficam atribuídos os membros e os valores em pares
+
+const usuario =
+{
+   nome : "Zezinho",
+   idade : 35,
+   ativado : true
+};
+
+3- Para acesso aos membros, usa-se o ponto entre o nome do objeto e o membro (usuario.nome)
+4- Os objetos podem ter funções dentro deles
+
+const usuario =
+{
+   nome : "Zezinho",
+   exibirNome() { console.log(`Nome do Usuário: ${this.nome}`);} (this = ponteiro interno)
+}
+usuario.exibirNome();
+
+5- Membros podem ser adicionados ou removidos durante a execução do programa
+
+const carro = {marca: "Toyota"};
+carro.modelo = "Corolla";
+delete carro.marca;
+
+6- Se igualar um objeto a outro (obj1 = obj2), o endereço para onde os dois apontam passa a ser o mesmo e não "alteram o valor"
+
+ARRAYS
+1- Não possuem tamanho fixo
+2- Pode misturar diferentes tipos de dados (const lista = [10, "dez", true])
+3- Tamanho e memória são gerenciadas internamente
+4- Contagem de membros começa no índice 0
+5- Matrizes são escritas aninhando colchetes
+
+const matriz = [
+   [1, 2],
+   [3, 4]
+];
+console.log(matriz[0][1]);  (2)
+
+6- A propriedade (array).length retorna o número de elementos do array
+7- Os métodos (array).push ou .pop adiciona ou remove elementos do final
+8- Função (array).includes(x) verifica se "x" está no array
+9- Função (array).map() ou .filter() transforma ou filtra dados do array
+10 (array).join() transforma array em string e .split() o contrário
+11- (array).splice() remove um elemento do meio do vetor
+
+
+STRINGS
+1- Conjuntos de caracteres tratados como objetos prontos com tamanho variável
+2- Imutáveis, necessitando de uma nova string caso mudançça de algum caractere
+3- Concatenação (junção) simples entre strings com uso de "+"
+
+let nome = "Zezinho";
+let hello = "Hello " + nome;
+
+4- Comparação direta com "==="
+
+if (cor === "Azul")
+{
+}
+
+5- (string).length retorna o tamanho da string
+6- (string).toUpperCase() e .toLowerCase() mudam para maiúsculo ou minúsculo
+7- (string).includes("palavra") verifica se a string contém o texto e retorna true ou false
+8- (string).split(" ") divide o texto em array de palavras e (array).join() junta palavras em string
+
+let lista = ["C", "JS", "Python"];
+let texto = lista.join(" - ");
+(texto = "C - JS - Python")
+
+9- Variáveis podem ser colocadas direto na string usando `` e ${}
+
+let nome = "Zezinho";
+console.log(`Hello ${nome}`);
+
+
+DESESTRUTURAÇÃO
+1- Usado para extrair dados de objetos e arrays
+
+const {nome, idade} = usuario;
+(cria as variáveis nome e idade direto do objeto usuario)
+
+const [primeiro, segundo] = [10, 20];
+(cria as variáveis primeiro e segundo com os valores do vetor)
+
+
+CONTROLE DE FLUXO
+1- IF - Executa a próxima operação entre chaves {} se a condição entre parenteses () for verdadeira
+Se a condição for 0, "" uma string vazia, NULL, NaN ou undefined a condição será falsa
+
+if (x === 4)
+{
+  console.log("X igual a Quatro");
+}
+
+2- ELSE - Se a condição do if for falsa, executa a próxima ação (não é obrigatório)
+
+else
+{
+  console.log("X diferente de Quatro");
+}
+
+3- SWITCH - Intercala entre opções de valor inteiro chamadas CASE de acordo com um parâmetro recebido
+
+let opc = HTML;
+switch (opc)
+{ 
+
+}
+
+4- CASE - Opção de valor inteiro dentro de um SWITCH 
+
+switch (opc)
+{
+  case '1':
+  função();
+  break;
+
+  case '2': 
+  função2();
+  break;
+}
+
+5- DEFAULT - Ação desencadeada se nenhum dos CASES ocorrerem (não obrigatório)
+
+switch (opc)
+{
+  case '1':
+  função();
+  break;
+
+  case '2': 
+  função2();
+  break;
+
+  default:
+  console.log("Opção Inválida");
+}
+
+6- FOR - Recebe um valor inicial, uma condição e uma operação ao valor inicial e a cada contagem, realiza uma ação
+
+for (let i = 0; i < 5; i++)
+{ 
+  console.log("\nContagem");
+}
+
+Possui uma forma abreviada para ler dados de vetores
+
+const notas = [7.5, 8.0, 10.0];
+for (let nota of notas)
+{
+   console.log(nota);
+}
+
+
+E uma forma abreviada para propriedades de objetos
+
+const usuario = {nome: "Zezinho", idade: 35};
+for (let chave in usuario)
+{
+   console.log(`${chave}: ${usuario[chave]}`);
+}
+
+7- WHILE - Recebe uma condição e realiza uma ação enquanto condição verdadeira
+
+let opc = HTML;
+while (opc < 10)
+{
+  console.log("Arroz Doce");
+}
+
+8- DO ... WHILE - Realiza ação primeiro e só interrompe quando a condição WHILE for cumprida
+
+let opc;
+do 
+{
+  console.log("Deseja mais alguma coisa? [n para não]")
+  opc = HTML;
+}
+while (opc != 'n')
+
+9- BREAK - Dentro de loops (for, while, switch) interrompe o laço
+
+switch (opc)
+{
+  case '1':
+  função();
+  break;
+
+  case '2': 
+  função2();
+  break;
+
+  default:
+  console.log("Opção Inválida");
+}
+
+10 - CONTINUE - Dentro de FOR e WHILE encerra a interação atual e passa para a próxima 
+
+for (let i = 0; i < 5; i++)
+{ 
+  if (i === 4)
+    { 
+      continue;
+    }
+  console.log("\nContagem");
+} 
+
+
+TRATAMENTO DE ERROS
+1- TRY - Bloco onde o código pode levar a uma falha
+2- CATCH - Bloco executado em caso de erro no try
+3- FINALLY - BLoco executado sempre, com erro ou não
+
+try 
+{
+   let dado = calcularImc(80, 1.70);
+}
+catch (error)
+{
+   console.log("Erro ao calcular: " + error.message);
+}
+finally
+{
+   console.log("Processo encerrado");
+}
+
+
+ASSINCRONISMO
+1- Promise é um objeto que ainda vai receber o valor durante a execução de alguma funçao
+2- Possui 3 estados
+
+Pending- ainda está processando
+Fulfilled- O valor chegou sem erro
+Rejected- Ocorreu um erro
+
+3- ASYNC - usado antes da definição da função para definir que ela conterá funções assíncronas com a execução do código
+4- AWAIT - usado antes da tarefa para que o código só avance se a tarefa for concluída
+
+async function processarPagamento()
+{
+   console.log("Iniciando");
+   const confirmacao = await chamarBancoDeDados();
+   console.log("Pagamento confirmado: " + confirmacao);
+}
+
+5- A interface não fica travada enquanto espera uma resposta lenta
+6- FETCH() - função nativa que busca dados na internet e retorna uma Promise
+7- Uso de assincronismo  combina com o uso de try e catch para tratamento de Rejecteds
+
+async function pagarDados()
+{
+   try
+   {
+      const resposta = await fetch("https://api.site.com/dados");
+      const dados = await resposta.json();
+      console.log(dados);
+   }
+   catch(erro)
+   {
+      console.error("Falha na busca: " + erro.message);
+   }
+}
+
+
+MÓDULOS
+1- Usados para organizar o código em mais de um arquivo
+2- EXPORT - colocado antes de uma função ou variável para que outros arquivos acesssem
+
+export const soma = (a, b) => a + b;
+
+3- IMPORT - colocado no arquivo que deseja trazer as variáveis ou funções
+
+import {soma} from './matematica.js';
+console.log(soma(2, 4));
+
+4- DEFAULT - usado quando o arquivo exporta apenas uma coisa principal
+
+const usuario = {nome: "Zezinho"};
+export default usuario; (só um default no arquivo)
+
+5- Nesse caso do default, no arquivo principal não usam chaves e pode dar o nome que quiser 
+
+import user from './Usuario.js';
+console.log(user.nome);
